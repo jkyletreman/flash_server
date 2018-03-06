@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 8000;
 const morgan = require('morgan');
+const bodyParser = require('body-parser')
 
 // middleware
 app.use(morgan('combined'));
