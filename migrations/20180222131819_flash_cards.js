@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('question', 150).notNull();
     table.text('answer').notNull();
+    table.timestamps(true, true);
   })
 };
 
