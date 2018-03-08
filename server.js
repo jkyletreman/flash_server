@@ -29,13 +29,13 @@ app.get("/cards", (req, res) => {
 });
 
 // create
-app.post("/new", (req, res) => {
+app.post("/create", (req, res) => {
   createCard(req).then(cards => {
   const card = cards[0];
 
   res.format({
-    'application/json': () => res.json(card)
-    });
+    "application/json": () => res.json(card)
+    })
   });
 });
 

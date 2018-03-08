@@ -5,10 +5,10 @@ function findCard() {
   return knex('flashcards');
 }
 // create
-function createCard({ params: { card_id }, body: { question, answer }}) {
+function createCard({ body: { question, answer }}) {
   return knex('flashcards')
     .returning('*')
-    .insert({ question, answer, card_id });
+    .insert({ question, answer });
 }
 
 module.exports = {
