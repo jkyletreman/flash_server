@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express();
 const PORT = 8000;
 
@@ -12,12 +13,13 @@ const {
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 // get ALL
 app.get("/cards", (req, res) => {
@@ -30,7 +32,7 @@ app.get("/cards", (req, res) => {
 
 // create
 app.post("/create", (req, res) => {
-  createCard(req).then(cards => {
+  createCard(req.body).then(cards => {
   const card = cards[0];
 
   res.format({

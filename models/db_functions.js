@@ -5,7 +5,7 @@ function findCard() {
   return knex('flashcards');
 }
 // create
-function createCard({ body: { question, answer }}) {
+function createCard({ question, answer }) {
   return knex('flashcards')
     .returning('*')
     .insert({ question, answer });
