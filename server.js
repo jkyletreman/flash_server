@@ -45,4 +45,4 @@ app.use('/', (req, res) => {
   res.sendStatus(404);
 });
 
-app.listen(PORT, console.log('Ready to Serve!'))
+app.listen(process.env.PORT || PORT , () => console.log('Ready to Serve!'))
